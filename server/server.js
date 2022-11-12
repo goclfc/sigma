@@ -24,17 +24,12 @@ const ads = [
   csv()
       .fromFile(csvFilePath)
       .then((jsonObj) => {
-          console.log(jsonObj, 'this');
-          /**
-           * [
-           * 	{a:"1", b:"2", c:"3"},
-           * 	{a:"4", b:"5". c:"6"}
-           * ]
-           */
       })
-    const jsonArray = csv().fromFile(csvFilePath);
-  app.get('/', (req, res) => {
-    res.send.json(jsonArray);
+
+  app.get('/', async(req, res) => {
+    const jsonArray = await csv().fromFile(csvFilePath);
+    console.log(jsonArray,'tjat')
+    res.send(jsonArray);
   });
 
 
