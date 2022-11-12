@@ -34,7 +34,7 @@ const ads = [
       })
     const jsonArray = csv().fromFile(csvFilePath);
   app.get('/', (req, res) => {
-    res.send(jsonArray);
+    res.send.json(jsonArray);
   });
 
 
