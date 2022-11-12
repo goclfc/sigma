@@ -14,7 +14,7 @@ app.use(xss());
 app.use(mongoSanitize());
 
 /// routes
-app.use('/api',routes)
+// app.use('/api',routes)
 
 const ads = [
     {title: 'Hello, world (again)!'}
