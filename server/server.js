@@ -19,8 +19,22 @@ app.use(mongoSanitize());
 const ads = [
     {title: 'Hello, world (again)!'}
   ];
+  const csvFilePath = './server/db.csv'
+  const csv = require('csvtojson')
+  csv()
+      .fromFile(csvFilePath)
+      .then((jsonObj) => {
+          console.log(jsonObj, 'this');
+          /**
+           * [
+           * 	{a:"1", b:"2", c:"3"},
+           * 	{a:"4", b:"5". c:"6"}
+           * ]
+           */
+      })
+    const jsonArray = csv().fromFile(csvFilePath);
   app.get('/', (req, res) => {
-    res.send(ads);
+    res.send(jsonArray);
   });
 
 
