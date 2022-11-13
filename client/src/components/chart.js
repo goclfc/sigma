@@ -19,8 +19,8 @@ ChartJS.register(
     Legend
 );
 const ChartBar = (props) => {
-    const [show,setShow]=useState(true)
-    console.log(props)
+    const [show,setShow]=useState(false)
+    const [display,setDisplay]=useState('Count')
     const options = {
         responsive: true,
         plugins: {
@@ -29,7 +29,7 @@ const ChartBar = (props) => {
             },
             title: {
                 display: false,
-                text: 'Chart.js Bar Chart',
+                text: 'test',
             },
         },
     };
@@ -53,11 +53,10 @@ const ChartBar = (props) => {
 
 
    desc.forEach((descr,i) => {
-    console.log(props.data,111111111111)
     data.datasets.push(
         {
             label: descr,
-            data: [props.data[0+i*4]['Percentage'], props.data[1+i*4]['Percentage'], props.data[2+i*4]['Percentage'],props.data[3+i*4]['Percentage']],
+            data: [props.data[0+i*4][display] , props.data[1+i*4][display] , props.data[2+i*4][display] ,props.data[3+i*4][display] ],
             backgroundColor: ['red','blue','yellow','blue'],
             hidden:show
         },
@@ -75,6 +74,20 @@ if(button){
             setShow(!show)
        
      });
+    });
+}
+const percentage =document.getElementById("percentage")
+if(percentage){
+
+    percentage.addEventListener("click",()=> {
+        setDisplay('Percentage')
+    });
+}
+const countW =document.getElementById("count")
+if(countW){
+
+    countW.addEventListener("click",()=> {
+        setDisplay('Count')
     });
 }
     return (<Bar options={options} data={data} />)
